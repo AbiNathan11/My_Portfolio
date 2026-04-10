@@ -1,13 +1,23 @@
-export const toast = ({ title, description }) => {
+type ToastOptions = {
+  title: string
+  description?: string
+  variant?: "default" | "destructive"
+}
+
+export const toast = ({ title, description, variant = "default" }: ToastOptions) => {
   // In a real implementation, this would use a toast library or context
-  console.log(`Toast: ${title} - ${description}`)
+  console.log(`Toast: ${title} - ${description ?? ""}`)
 
   // Create a temporary toast element
   const toastElement = document.createElement("div")
-  toastElement.className = "fixed top-4 right-4 bg-background border rounded-md shadow-md p-4 max-w-md z-50"
+  const variantClass =
+    variant === "destructive"
+      ? "border-destructive/50 bg-destructive text-destructive-foreground"
+      : "bg-background border"
+  toastElement.className = `fixed top-4 right-4 rounded-md shadow-md p-4 max-w-md z-50 ${variantClass}`
   toastElement.innerHTML = `
     <div class="font-semibold">${title}</div>
-    <div class="text-muted-foreground">${description}</div>
+    <div class="text-muted-foreground">${description ?? ""}</div>
   `
   document.body.appendChild(toastElement)
 

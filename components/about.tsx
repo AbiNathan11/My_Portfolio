@@ -39,14 +39,10 @@ export default function About() {
           >
             <h3 className="text-2xl font-bold mb-4">A Passionate Developer</h3>
             <p className="text-muted-foreground mb-6">
-              I'm a software developer with a passion for creating clean, efficient, and user-friendly applications.
-              With over 5 years of experience in the industry, I've worked on a variety of projects ranging from small
-              business websites to complex enterprise applications.
+              I am a Computer Science undergraduate at Uva Wellassa University of Sri Lanka and a dedicated Full Stack Developer, passionate about building scalable and user-friendly web applications. I enjoy working with modern technologies such as React, Node.js, PHP, Java, Python, and SQL.
             </p>
             <p className="text-muted-foreground mb-6">
-              My journey in software development began when I was in college, where I discovered my love for solving
-              complex problems through code. Since then, I've been continuously learning and improving my skills to stay
-              at the forefront of technology.
+              I focus on writing clean, maintainable code and designing efficient systems that solve real-world problems. I am continuously learning and exploring new technologies to improve my skills and contribute effectively to the tech industry.
             </p>
             <p className="text-muted-foreground">
               When I'm not coding, you can find me exploring new technologies, contributing to open-source projects, or
