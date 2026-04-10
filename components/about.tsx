@@ -3,7 +3,7 @@
 import { motion } from "framer-motion"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { Code, Lightbulb, Rocket } from "lucide-react"
+import { Globe, Server, Smartphone } from "lucide-react"
 
 export default function About() {
   const fadeIn = {
@@ -45,8 +45,7 @@ export default function About() {
               I focus on writing clean, maintainable code and designing efficient systems that solve real-world problems. I am continuously learning and exploring new technologies to improve my skills and contribute effectively to the tech industry.
             </p>
             <p className="text-muted-foreground">
-              When I'm not coding, you can find me exploring new technologies, contributing to open-source projects, or
-              sharing my knowledge through blog posts and community forums.
+              I am highly motivated to apply my knowledge in real-world projects, collaborate with teams, and gain practical experience that helps me grow as a professional software developer.
             </p>
           </motion.div>
 
@@ -62,13 +61,12 @@ export default function About() {
                 <CardContent className="p-6">
                   <div className="flex items-start gap-4">
                     <div className="bg-primary/10 p-3 rounded-full">
-                      <Code className="h-6 w-6 text-primary" />
+                      <Globe className="h-6 w-6 text-primary" />
                     </div>
                     <div>
-                      <h4 className="text-xl font-semibold mb-2">Clean Code</h4>
+                      <h4 className="text-xl font-semibold mb-2">Frontend Development</h4>
                       <p className="text-muted-foreground">
-                        I write maintainable, scalable, and efficient code following best practices and industry
-                        standards.
+                        I create modern, responsive user interfaces with React and Tailwind CSS, focusing on smooth user experience and clean design.
                       </p>
                     </div>
                   </div>
@@ -87,12 +85,12 @@ export default function About() {
                 <CardContent className="p-6">
                   <div className="flex items-start gap-4">
                     <div className="bg-primary/10 p-3 rounded-full">
-                      <Lightbulb className="h-6 w-6 text-primary" />
+                      <Server className="h-6 w-6 text-primary" />
                     </div>
                     <div>
-                      <h4 className="text-xl font-semibold mb-2">Problem Solver</h4>
+                      <h4 className="text-xl font-semibold mb-2">Backend Development</h4>
                       <p className="text-muted-foreground">
-                        I enjoy tackling complex challenges and finding elegant solutions through creative thinking.
+                        I build secure and scalable server-side applications using Node.js and PHP, handling APIs, authentication, and database operations.
                       </p>
                     </div>
                   </div>
@@ -111,12 +109,12 @@ export default function About() {
                 <CardContent className="p-6">
                   <div className="flex items-start gap-4">
                     <div className="bg-primary/10 p-3 rounded-full">
-                      <Rocket className="h-6 w-6 text-primary" />
+                      <Smartphone className="h-6 w-6 text-primary" />
                     </div>
                     <div>
-                      <h4 className="text-xl font-semibold mb-2">Fast Learner</h4>
+                      <h4 className="text-xl font-semibold mb-2">Mobile Application Development</h4>
                       <p className="text-muted-foreground">
-                        I quickly adapt to new technologies and environments, constantly expanding my skill set.
+                        I develop simple, efficient mobile applications focused on usability and real-world functionality with smooth performance.
                       </p>
                     </div>
                   </div>

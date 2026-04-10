@@ -9,7 +9,7 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import { toast } from "@/components/ui/use-toast"
-import { Mail, MapPin, Phone, Github, Linkedin, Twitter } from "lucide-react"
+import { Mail, MapPin, Phone, Github, Linkedin } from "lucide-react"
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -218,8 +218,8 @@ export default function Contact() {
                       </a>
                     </Button>
                     <Button variant="outline" size="icon" className="rounded-full" asChild>
-                      <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
-                        <Twitter className="h-5 w-5" />
+                      <a href="mailto:abiramythirulinganathan@gmail.com">
+                        <Mail className="h-5 w-5" />
                       </a>
                     </Button>
                     <Button variant="outline" size="icon" className="rounded-full" asChild>
