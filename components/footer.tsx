@@ -24,10 +24,6 @@ export default function Footer() {
               <span className="text-primary">AbiNathan</span>
               <span className="text-white">&gt;</span>
             </div>
-            <div className="h-4 w-px bg-border/60 hidden md:block" />
-            <p className="text-xs text-muted-foreground italic">
-              Built with passion & code.
-            </p>
           </div>
           
           <div className="flex flex-col items-center md:items-end gap-2">
