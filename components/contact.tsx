@@ -9,7 +9,6 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import { toast } from "@/components/ui/use-toast"
-import { Mail, MapPin, Phone } from "lucide-react"
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -73,27 +72,6 @@ export default function Contact() {
     }
   }
 
-  const contactInfo = [
-    {
-      icon: <Mail className="h-6 w-6 text-primary" />,
-      title: "Email",
-      value: "abiramythirulinganathan@gmail.com",
-      link: "mailto:abiramythirulinganathan@gmail.com",
-    },
-    {
-      icon: <Phone className="h-6 w-6 text-primary" />,
-      title: "Phone",
-      value: "+94 77 820 0752",
-      link: "tel:+94778200752",
-    },
-    {
-      icon: <MapPin className="h-6 w-6 text-primary" />,
-      title: "Location",
-      value: "Jaffna, SriLanka",
-      link: null,
-    },
-  ]
-
   return (
     <section id="contact" className="py-20 bg-muted/30">
       <div className="container mx-auto px-4">
@@ -111,33 +89,32 @@ export default function Contact() {
           <h2 className="text-3xl md:text-4xl font-bold mb-4">Get In Touch</h2>
           <div className="w-20 h-1 bg-primary mx-auto"></div>
         </motion.div>
-
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div className="max-w-3xl mx-auto">
           <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
             variants={fadeIn}
-            className="lg:col-span-2"
           >
-            <Card>
-              <CardContent className="p-6">
+            <Card className="border-none shadow-xl bg-background/50 backdrop-blur-sm">
+              <CardContent className="p-8">
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="space-y-2">
-                      <Label htmlFor="name">Your Name</Label>
+                      <Label htmlFor="name" className="text-sm font-semibold tracking-wide uppercase">Your Name</Label>
                       <Input
                         id="name"
                         name="name"
                         placeholder=""
                         value={formData.name}
                         onChange={handleChange}
+                        className="bg-muted/50 border-none focus-visible:ring-primary"
                         required
                       />
                     </div>
                     <div className="space-y-2">
-                      <Label htmlFor="email">Your Email</Label>
+                      <Label htmlFor="email" className="text-sm font-semibold tracking-wide uppercase">Your Email</Label>
                       <Input
                         id="email"
                         name="email"
@@ -145,23 +122,25 @@ export default function Contact() {
                         placeholder=""
                         value={formData.email}
                         onChange={handleChange}
+                        className="bg-muted/50 border-none focus-visible:ring-primary"
                         required
                       />
                     </div>
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="subject">Subject</Label>
+                    <Label htmlFor="subject" className="text-sm font-semibold tracking-wide uppercase">Subject</Label>
                     <Input
                       id="subject"
                       name="subject"
                       placeholder=""
                       value={formData.subject}
                       onChange={handleChange}
+                      className="bg-muted/50 border-none focus-visible:ring-primary"
                       required
                     />
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="message">Message</Label>
+                    <Label htmlFor="message" className="text-sm font-semibold tracking-wide uppercase">Message</Label>
                     <Textarea
                       id="message"
                       name="message"
@@ -169,47 +148,16 @@ export default function Contact() {
                       rows={6}
                       value={formData.message}
                       onChange={handleChange}
+                      className="bg-muted/50 border-none focus-visible:ring-primary resize-none"
                       required
                     />
                   </div>
-                  <Button type="submit" className="w-full" disabled={isSubmitting}>
-                    {isSubmitting ? "Sending..." : "Send Message"}
+                  <Button type="submit" size="lg" className="w-full text-lg h-12 shadow-lg shadow-primary/20 hover:shadow-primary/40 transition-all duration-300" disabled={isSubmitting}>
+                    {isSubmitting ? "Sending Message..." : "Send Message"}
                   </Button>
                 </form>
               </CardContent>
             </Card>
-          </motion.div>
-
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.3 }}
-            variants={fadeIn}
-          >
-            <div className="space-y-6">
-              {contactInfo.map((info, index) => (
-                <Card key={index}>
-                  <CardContent className="p-6">
-                    <div className="flex items-start gap-4">
-                      <div className="bg-primary/10 p-3 rounded-full">{info.icon}</div>
-                      <div>
-                        <h4 className="text-lg font-semibold mb-1">{info.title}</h4>
-                        {info.link ? (
-                          <a href={info.link} className="text-muted-foreground hover:text-primary transition-colors">
-                            {info.value}
-                          </a>
-                        ) : (
-                          <p className="text-muted-foreground">{info.value}</p>
-                        )}
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
-
-
-            </div>
           </motion.div>
         </div>
       </div>
