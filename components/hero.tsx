@@ -3,11 +3,21 @@
 import { useEffect, useState } from "react"
 import { Button } from "@/components/ui/button"
 import { ArrowRight, Github, Linkedin, Mail } from "lucide-react"
-import { motion } from "framer-motion"
+import { motion, AnimatePresence } from "framer-motion"
 
 export default function Hero() {
   const [text, setText] = useState("")
+  const [scrolled, setScrolled] = useState(false)
   const fullText = "Software Developer"
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50)
+    }
+
+    window.addEventListener("scroll", handleScroll)
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [])
 
   useEffect(() => {
     let i = 0
@@ -37,57 +47,74 @@ export default function Hero() {
   return (
     <section id="home" className="relative pt-32 pb-20 md:pt-40 md:pb-32">
 
-      {/* Left social sidebar */}
-      <motion.div
-        initial={{ opacity: 0, x: -20 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.6, delay: 0.8 }}
-        className="fixed left-6 top-1/2 -translate-y-1/2 hidden lg:flex flex-col items-center gap-5 z-40"
-      >
-        <a
-          href="https://github.com/AbiNathan11"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-white hover:text-primary transition-colors duration-200 hover:-translate-y-0.5 transform"
-          aria-label="GitHub"
-        >
-          <Github className="h-5 w-5" />
-        </a>
-        <a
-          href="http://linkedin.com/in/abiramy-thirulinganathan"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-white hover:text-primary transition-colors duration-200 hover:-translate-y-0.5 transform"
-          aria-label="LinkedIn"
-        >
-          <Linkedin className="h-5 w-5" />
-        </a>
-        <a
-          href="mailto:abiramythirulinganathan@gmail.com"
-          className="text-white hover:text-primary transition-colors duration-200 hover:-translate-y-0.5 transform"
-          aria-label="Email"
-        >
-          <Mail className="h-5 w-5" />
-        </a>
-        <div className="w-px h-56 bg-white/60 mt-2" />
-      </motion.div>
+      {/* Sidebars - only visible when not scrolled */}
+      <AnimatePresence>
+        {!scrolled && (
+          <>
+            {/* Left social sidebar */}
+            <motion.div
+              key="left-sidebar"
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -20 }}
+              transition={{ duration: 0.5 }}
+              className="absolute left-6 top-[58%] -translate-y-1/2 hidden lg:flex flex-col items-center z-40"
+            >
+              <div className="flex flex-col items-center gap-5 relative">
+                <a
+                  href="https://github.com/AbiNathan11"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-white hover:text-primary transition-colors duration-200 hover:-translate-y-0.5 transform"
+                  aria-label="GitHub"
+                >
+                  <Github className="h-5 w-5" />
+                </a>
+                <a
+                  href="http://linkedin.com/in/abiramy-thirulinganathan"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-white hover:text-primary transition-colors duration-200 hover:-translate-y-0.5 transform"
+                  aria-label="LinkedIn"
+                >
+                  <Linkedin className="h-5 w-5" />
+                </a>
+                <a
+                  href="mailto:abiramythirulinganathan@gmail.com"
+                  className="text-white hover:text-primary transition-colors duration-200 hover:-translate-y-0.5 transform"
+                  aria-label="Email"
+                >
+                  <Mail className="h-5 w-5" />
+                </a>
+                {/* Vertical line hanging below */}
+                <div className="absolute top-[calc(100%+20px)] w-px h-32 bg-white/60" />
+              </div>
+            </motion.div>
 
-      {/* Right email sidebar */}
-      <motion.div
-        initial={{ opacity: 0, x: 20 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.6, delay: 0.8 }}
-        className="fixed right-6 top-1/2 -translate-y-1/2 hidden lg:flex flex-col items-center gap-4 z-40"
-      >
-        <a
-          href="mailto:abiramythirulinganathan@gmail.com"
-          className="text-white hover:text-primary transition-colors duration-200 text-xs tracking-widest"
-          style={{ writingMode: "vertical-rl" }}
-        >
-          abiramythirulinganathan@gmail.com
-        </a>
-        <div className="w-px h-24 bg-white/60" />
-      </motion.div>
+            {/* Right email sidebar */}
+            <motion.div
+              key="right-sidebar"
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: 20 }}
+              transition={{ duration: 0.5 }}
+              className="absolute right-6 top-[35%] -translate-y-1/2 hidden lg:flex flex-col items-center z-40"
+            >
+              <div className="flex flex-col items-center gap-4 relative">
+                <a
+                  href="mailto:abiramythirulinganathan@gmail.com"
+                  className="text-white hover:text-primary transition-colors duration-200 text-xs tracking-widest block"
+                  style={{ writingMode: "vertical-rl" }}
+                >
+                  abiramythirulinganathan@gmail.com
+                </a>
+                {/* Vertical line hanging below */}
+                <div className="absolute top-[calc(100%+20px)] w-px h-32 bg-white/60" />
+              </div>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
       <div className="container mx-auto px-4 lg:pl-16">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
