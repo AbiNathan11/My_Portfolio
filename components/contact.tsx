@@ -9,7 +9,7 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import { toast } from "@/components/ui/use-toast"
-import { Mail, MapPin, Phone, Github, Linkedin } from "lucide-react"
+import { Mail, MapPin, Phone } from "lucide-react"
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -208,28 +208,7 @@ export default function Contact() {
                 </Card>
               ))}
 
-              <Card className="mt-8">
-                <CardContent className="p-6">
-                  <h4 className="text-lg font-semibold mb-4">Follow Me</h4>
-                  <div className="flex gap-4">
-                    <Button variant="outline" size="icon" className="rounded-full" asChild>
-                      <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
-                        <Linkedin className="h-5 w-5" />
-                      </a>
-                    </Button>
-                    <Button variant="outline" size="icon" className="rounded-full" asChild>
-                      <a href="mailto:abiramythirulinganathan@gmail.com">
-                        <Mail className="h-5 w-5" />
-                      </a>
-                    </Button>
-                    <Button variant="outline" size="icon" className="rounded-full" asChild>
-                      <a href="https://github.com" target="_blank" rel="noopener noreferrer">
-                        <Github className="h-5 w-5" />
-                      </a>
-                    </Button>
-                  </div>
-                </CardContent>
-              </Card>
+
             </div>
           </motion.div>
         </div>
