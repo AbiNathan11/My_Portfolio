@@ -7,6 +7,9 @@ import { motion, AnimatePresence } from "framer-motion"
 
 export default function Hero() {
   const [scrolled, setScrolled] = useState(false)
+  const [text, setText] = useState("")
+  const fullText = "Software Developer"
+
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50)
@@ -14,6 +17,20 @@ export default function Hero() {
 
     window.addEventListener("scroll", handleScroll)
     return () => window.removeEventListener("scroll", handleScroll)
+  }, [])
+
+  useEffect(() => {
+    let i = 0
+    const typingInterval = setInterval(() => {
+      if (i < fullText.length) {
+        setText(fullText.substring(0, i + 1))
+        i++
+      } else {
+        clearInterval(typingInterval)
+      }
+    }, 100)
+
+    return () => clearInterval(typingInterval)
   }, [])
 
   const scrollToSection = (sectionId: string) => {
@@ -105,7 +122,8 @@ export default function Hero() {
               Hi, I'm <span className="text-primary">Abiramy Thirulinganathan</span>
             </h1>
             <h2 className="text-2xl md:text-3xl font-medium text-muted-foreground mb-6">
-              Software Developer
+              <span className="text-foreground">{text}</span>
+              <span className="animate-blink">|</span>
             </h2>
             <p className="text-lg text-muted-foreground mb-8 max-w-lg">
               I design and develop high-quality digital experiences, combining modern technologies with clean and maintainable code.

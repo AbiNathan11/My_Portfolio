@@ -107,16 +107,16 @@ export default function TechStack() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center max-w-6xl mx-auto min-h-[400px]">
           {/* Left Side: Timeline Design */}
           <div className="lg:col-span-4 flex justify-center lg:justify-start">
-            <div className="relative flex flex-col items-center lg:items-start pl-8">
-              {/* Vertical line */}
-              <div className="absolute left-0 top-4 bottom-4 w-px bg-gradient-to-b from-transparent via-primary/40 to-transparent" />
+            <div className="relative flex flex-col items-center lg:items-start">
+              {/* Vertical line - centered on mobile, left-aligned on desktop */}
+              <div className="absolute left-1/2 lg:left-2 top-4 bottom-4 w-px bg-gradient-to-b from-transparent via-primary/40 to-transparent -translate-x-1/2 lg:translate-x-0" />
               
-              <div className="space-y-12 py-8">
+              <div className="space-y-12 py-8 relative">
                 {Object.entries(technologies).map(([key, category]) => (
                   <div
                     key={key}
                     onClick={() => setSelectedMilestone(key)}
-                    className="relative flex items-center gap-6 cursor-pointer group"
+                    className="relative flex items-center lg:flex-row flex-col lg:gap-6 gap-2 cursor-pointer group"
                   >
                     {/* The Milestone Dot */}
                     <div 
@@ -131,8 +131,8 @@ export default function TechStack() {
                       )}
                     </div>
 
-                    <span className={`text-sm font-bold tracking-widest uppercase transition-all duration-300 ${
-                      selectedMilestone === key ? "text-primary translate-x-0" : "text-muted-foreground -translate-x-2 group-hover:text-foreground group-hover:translate-x-0"
+                    <span className={`text-sm font-bold tracking-widest uppercase transition-all duration-300 lg:text-left text-center ${
+                      selectedMilestone === key ? "text-primary lg:translate-x-0" : "text-muted-foreground lg:-translate-x-2 group-hover:text-foreground group-hover:translate-x-0"
                     }`}>
                       {category.title.split(" ")[0]}
                     </span>
