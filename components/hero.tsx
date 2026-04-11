@@ -36,7 +36,59 @@ export default function Hero() {
 
   return (
     <section id="home" className="relative pt-32 pb-20 md:pt-40 md:pb-32">
-      <div className="container mx-auto px-4">
+
+      {/* Left social sidebar */}
+      <motion.div
+        initial={{ opacity: 0, x: -20 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.6, delay: 0.8 }}
+        className="fixed left-6 top-1/2 -translate-y-1/2 hidden lg:flex flex-col items-center gap-5 z-40"
+      >
+        <a
+          href="https://github.com/AbiNathan11"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-white hover:text-primary transition-colors duration-200 hover:-translate-y-0.5 transform"
+          aria-label="GitHub"
+        >
+          <Github className="h-5 w-5" />
+        </a>
+        <a
+          href="http://linkedin.com/in/abiramy-thirulinganathan"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-white hover:text-primary transition-colors duration-200 hover:-translate-y-0.5 transform"
+          aria-label="LinkedIn"
+        >
+          <Linkedin className="h-5 w-5" />
+        </a>
+        <a
+          href="mailto:abiramythirulinganathan@gmail.com"
+          className="text-white hover:text-primary transition-colors duration-200 hover:-translate-y-0.5 transform"
+          aria-label="Email"
+        >
+          <Mail className="h-5 w-5" />
+        </a>
+        <div className="w-px h-56 bg-white/60 mt-2" />
+      </motion.div>
+
+      {/* Right email sidebar */}
+      <motion.div
+        initial={{ opacity: 0, x: 20 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.6, delay: 0.8 }}
+        className="fixed right-6 top-1/2 -translate-y-1/2 hidden lg:flex flex-col items-center gap-4 z-40"
+      >
+        <a
+          href="mailto:abiramythirulinganathan@gmail.com"
+          className="text-white hover:text-primary transition-colors duration-200 text-xs tracking-widest"
+          style={{ writingMode: "vertical-rl" }}
+        >
+          abiramythirulinganathan@gmail.com
+        </a>
+        <div className="w-px h-24 bg-white/60" />
+      </motion.div>
+      <div className="container mx-auto px-4 lg:pl-16">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
             <h1 className="text-4xl md:text-6xl font-bold mb-4">
@@ -60,23 +112,6 @@ export default function Hero() {
               </Button>
             </div>
 
-            <div className="flex gap-4 mt-8">
-              <Button variant="ghost" size="icon" className="rounded-full" asChild>
-                <a href="https://github.com/AbiNathan11" target="_blank" rel="noopener noreferrer">
-                  <Github className="h-5 w-5" />
-                </a>
-              </Button>
-              <Button variant="ghost" size="icon" className="rounded-full" asChild>
-                <a href="http://linkedin.com/in/abiramy-thirulinganathan" target="_blank" rel="noopener noreferrer">
-                  <Linkedin className="h-5 w-5" />
-                </a>
-              </Button>
-              <Button variant="ghost" size="icon" className="rounded-full" asChild>
-                <a href="mailto:abiramythirulinganathan@gmail.com">
-                  <Mail className="h-5 w-5" />
-                </a>
-              </Button>
-            </div>
           </motion.div>
 
           <motion.div

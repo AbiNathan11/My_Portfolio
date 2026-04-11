@@ -45,10 +45,12 @@ export default function Navbar() {
         scrolled ? "bg-background/80 backdrop-blur-md shadow-sm" : "bg-transparent",
       )}
     >
-      <div className="container mx-auto px-4 py-4">
+      <div className="container mx-auto px-4 lg:pl-16 py-4">
         <div className="flex items-center justify-between">
-          <button onClick={() => scrollToSection("home")} className="text-2xl font-bold text-primary">
-            Abi<span className="text-destructive">Nathan</span>
+          <button onClick={() => scrollToSection("home")} className="text-2xl font-bold tracking-tight">
+            <span className="text-white">&lt;/</span>
+            <span className="text-primary">AbiNathan</span>
+            <span className="text-white">&gt;</span>
           </button>
 
           {/* Desktop Navigation */}
