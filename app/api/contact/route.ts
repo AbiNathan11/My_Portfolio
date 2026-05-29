@@ -8,7 +8,7 @@ const contactSchema = z.object({
   name: z.string().trim().min(2, "Name must be at least 2 characters."),
   email: z.string().trim().email("Please enter a valid email address."),
   subject: z.string().trim().min(3, "Subject must be at least 3 characters."),
-  message: z.string().trim().min(10, "Message must be at least 10 characters."),
+  message: z.string().trim().min(3, "Message must be at least 3 characters."),
 })
 
 const receiverEmail =
@@ -30,9 +30,7 @@ function createTransport() {
   const pass = process.env.SMTP_PASS
 
   if (!host || !user || !pass) {
-    throw new Error(
-      "Missing SMTP configuration. Set SMTP_HOST, SMTP_PORT, SMTP_USER, and SMTP_PASS.",
-    )
+    return null
   }
 
   return nodemailer.createTransport({
@@ -62,6 +60,19 @@ export async function POST(request: Request) {
 
     const { name, email, subject, message } = parsed.data
     const transport = createTransport()
+
+    if (!transport) {
+      console.log("==========================================")
+      console.log("📩 PORTFOLIO CONTACT MESSAGE (LOCAL DEV MOCK):")
+      console.log(`👤 From: ${name} <${email}>`)
+      console.log(`📌 Subject: ${subject}`)
+      console.log(`💬 Message: ${message}`)
+      console.log("==========================================")
+      return NextResponse.json({
+        message: "Message received locally! (Please configure SMTP_HOST, SMTP_PORT, SMTP_USER, and SMTP_PASS in production to send real emails.)",
+      })
+    }
+
     const senderEmail = process.env.SMTP_USER as string
 
     await transport.sendMail({

@@ -60,7 +60,7 @@ export default function About() {
               <Card>
                 <CardContent className="p-6">
                   <div className="flex items-start gap-4">
-                    <div className="bg-primary/10 p-3 rounded-full">
+                    <div className="bg-primary/10 p-3 rounded-full flex-shrink-0">
                       <Globe className="h-6 w-6 text-primary" />
                     </div>
                     <div>
@@ -84,7 +84,7 @@ export default function About() {
               <Card>
                 <CardContent className="p-6">
                   <div className="flex items-start gap-4">
-                    <div className="bg-primary/10 p-3 rounded-full">
+                    <div className="bg-primary/10 p-3 rounded-full flex-shrink-0">
                       <Server className="h-6 w-6 text-primary" />
                     </div>
                     <div>
@@ -108,7 +108,7 @@ export default function About() {
               <Card>
                 <CardContent className="p-6">
                   <div className="flex items-start gap-4">
-                    <div className="bg-primary/10 p-3 rounded-full">
+                    <div className="bg-primary/10 p-3 rounded-full flex-shrink-0">
                       <Smartphone className="h-6 w-6 text-primary" />
                     </div>
                     <div>

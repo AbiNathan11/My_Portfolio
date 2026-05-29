@@ -5,8 +5,7 @@ import { motion, AnimatePresence } from "framer-motion"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog"
-import { ExternalLink, Github, ChevronDown } from "lucide-react"
+import { Github, ChevronDown } from "lucide-react"
 
 type Project = {
   id: number
@@ -16,13 +15,13 @@ type Project = {
   image: string
   tags: string[]
   features: string[]
-  demoLink: string
-  githubLink: string
+  githubLink?: string
+  frontendGithubLink?: string
+  backendGithubLink?: string
   fullDescription: string
 }
 
 export default function Projects() {
-  const [selectedProject, setSelectedProject] = useState<Project | null>(null)
   const [expandedProject, setExpandedProject] = useState<number | null>(null)
 
   const fadeIn = {
@@ -33,107 +32,56 @@ export default function Projects() {
   const projects: Project[] = [
     {
       id: 1,
-      title: "E-Commerce Platform",
-      shortDescription: "A full-featured e-commerce platform with product management.",
+      title: "ServiceHub",
+      shortDescription: "Home Service Management System",
       description:
-        "A full-featured e-commerce platform with product management, cart functionality, and payment processing.",
-      image: "/placeholder.svg?height=400&width=600",
-      tags: ["C++", "Qt", "SQLite", "CMake"],
+        "A full-stack Home Service Management System with role-based dashboards, secure JWT authentication, and booking tracking.",
+      image: "/service_hub.png",
+      tags: ["React.js", "Vite", "PHP", "MySQL", "JWT Authentication", "PHPMailer"],
       features: [
-        "Inventory management system",
-        "Real-time stock tracking",
-        "Secure payment processing",
-        "Order management dashboard",
-        "Customer analytics",
+        "Developed a full-stack Home Service Management System with role-based dashboards and secure JWT authentication.",
+        "Built RESTful APIs for bookings, provider verification, reviews, notifications, and booking management using PHP and MySQL.",
+        "Implemented OTP verification, provider assignment, booking tracking, ratings/reviews, and admin management features."
       ],
-      demoLink: "#",
-      githubLink: "#",
+      frontendGithubLink: "https://github.com/AbiNathan11/home-management-system-Frontend",
+      backendGithubLink: "https://github.com/AbiNathan11/home-management-system-Backend",
       fullDescription:
-        "This e-commerce platform provides businesses with a complete solution for selling products online. Built with C++ and Qt for high performance and cross-platform compatibility. Features include a responsive design, product catalog with filtering and search capabilities, shopping cart functionality, secure checkout integration, user authentication, and an admin dashboard for managing products, orders, and customers.",
+        "ServiceHub is a comprehensive, full-stack web application designed to connect customers with home service professionals. It features distinct, role-based dashboards for customers, service providers, and administrators. The backend is built with PHP 8.x using secure PDO for database transactions, custom RESTful APIs for operations, JWT for robust session handling, and PHPMailer to manage email notifications and OTP verifications. The user interface is crafted using React.js (Vite) with responsive modern designs to ensure smooth booking, technician tracking, and rating workflows."
     },
     {
       id: 2,
-      title: "Task Management System",
-      shortDescription: "A collaborative task management application with real-time updates.",
-      description: "A collaborative task management application with real-time updates and team workspaces.",
-      image: "/placeholder.svg?height=400&width=600",
-      tags: ["Java", "Spring Boot", "React", "PostgreSQL"],
+      title: "Spendly",
+      shortDescription: "Smart Budget & Expense Tracker Mobile Application",
+      description:
+        "A cross-platform mobile application for real-time expense tracking, budgeting, and financial planning.",
+      image: "/spendly.jpg",
+      tags: ["React Native", "Expo", "Node.js", "Express.js", "Supabase Auth", "PostgreSQL"],
       features: [
-        "Real-time collaboration",
-        "Task dependencies",
-        "Resource allocation",
-        "Progress tracking",
-        "Team management",
+        "Developed a cross-platform mobile application for expense tracking, budgeting, and financial planning.",
+        "Implemented secure authentication and real-time data management using Supabase Auth and PostgreSQL.",
+        "Designed features including spend tracking, bill reminders, monthly reports, and responsive reusable UI components."
       ],
-      demoLink: "#",
-      githubLink: "#",
+      githubLink: "https://github.com/AbiNathan11/spendly-expense-tracker",
       fullDescription:
-        "This task management system helps teams organize and track their work efficiently. Built with Java Spring Boot for the backend and React for the frontend, it provides robust task management capabilities. Features include task creation and assignment, due dates and reminders, progress tracking, file attachments, comments and discussions, team workspaces, and real-time updates.",
+        "Spendly is an advanced, cross-platform mobile application built using React Native and Expo, tailored to help users gain control of their financial life. It utilizes a secure Node.js and Express.js backend API coupled with Supabase for user authentication and PostgreSQL for high-performance transaction storage. Key features include intuitive financial charts, personalized budget caps, recurring bill reminders, automated monthly financial reports, and custom-styled modular UI components that ensure a premium, lightweight mobile experience."
     },
     {
       id: 3,
-      title: "System Resource Monitor",
-      shortDescription: "A comprehensive system monitoring tool with real-time analytics.",
-      description: "A comprehensive system monitoring tool with real-time analytics and performance tracking.",
-      image: "/placeholder.svg?height=400&width=600",
-      tags: ["C++", "Python", "Qt", "Linux"],
+      title: "University Semester Timetable Generator",
+      shortDescription: "Automated Timetable Generation & Scheduling System",
+      description:
+        "A web-based scheduling system utilizing Django and React to automate semester timetable generation and reduce conflicts.",
+      image: "/timetable.png",
+      tags: ["React.js", "Vite", "Django REST", "MySQL", "JWT Authentication"],
       features: [
-        "CPU/Memory monitoring",
-        "Process management",
-        "Network analytics",
-        "Disk usage tracking",
-        "Performance alerts",
+        "Developed a web-based timetable management system to automate semester timetable generation and reduce scheduling conflicts.",
+        "Implemented role-based access control with secure JWT authentication for administrators, lecturers, and students.",
+        "Integrated React frontend with Django REST APIs and MySQL database following MVC architecture principles."
       ],
-      demoLink: "#",
-      githubLink: "#",
+      githubLink: "https://github.com/AbiNathan11/University-timetable-system",
       fullDescription:
-        "This system resource monitor provides real-time insights into system performance. Built primarily in C++ with Python for data analysis, it offers comprehensive monitoring capabilities. The application tracks CPU usage, memory consumption, network traffic, and disk operations, providing detailed analytics and alerts for system administrators.",
-    },
-    {
-      id: 4,
-      title: "Compiler Design Project",
-      shortDescription: "A custom programming language compiler with optimization features.",
-      description: "A custom programming language compiler with advanced optimization features.",
-      image: "/placeholder.svg?height=400&width=600",
-      tags: ["C", "LLVM", "Assembly", "Python"],
-      features: ["Lexical analysis", "Syntax parsing", "Code optimization", "Error handling", "Assembly generation"],
-      demoLink: "#",
-      githubLink: "#",
-      fullDescription:
-        "This compiler project implements a custom programming language with modern features and optimizations. Built using C and LLVM, it includes comprehensive error handling and code optimization capabilities. The compiler performs lexical analysis, syntax parsing, semantic analysis, and generates optimized assembly code.",
-    },
-    {
-      id: 5,
-      title: "Distributed Database System",
-      shortDescription: "A distributed database system with high availability.",
-      description: "A distributed database system with high availability and fault tolerance.",
-      image: "/placeholder.svg?height=400&width=600",
-      tags: ["C++", "Rust", "gRPC", "Redis"],
-      features: ["Data replication", "Sharding", "Fault tolerance", "Load balancing", "Transaction management"],
-      demoLink: "#",
-      githubLink: "#",
-      fullDescription:
-        "This distributed database system provides high availability and fault tolerance for large-scale applications. Built with C++ and Rust for performance, it implements advanced features such as data replication, sharding, and automatic failover. The system includes comprehensive monitoring and management tools.",
-    },
-    {
-      id: 6,
-      title: "Neural Network Framework",
-      shortDescription: "A deep learning framework optimized for performance.",
-      description: "A deep learning framework with CUDA acceleration and optimization features.",
-      image: "/placeholder.svg?height=400&width=600",
-      tags: ["C++", "CUDA", "Python", "CMake"],
-      features: [
-        "CUDA acceleration",
-        "Automatic differentiation",
-        "Model optimization",
-        "Training pipelines",
-        "Performance profiling",
-      ],
-      demoLink: "#",
-      githubLink: "#",
-      fullDescription:
-        "This neural network framework provides high-performance deep learning capabilities. Built primarily in C++ with CUDA acceleration, it offers comprehensive tools for building and training neural networks. Features include automatic differentiation, model optimization, and detailed performance profiling.",
-    },
+        "This project is a highly automated web application built to solve complex scheduling conflicts in universities. Utilizing React.js (Vite) for the frontend and Django REST Framework for the powerful algorithmic backend, the system generates optimized timetables automatically based on constraints like classroom capacity, lecturer availability, and semester batches. It uses MySQL as a database following strict MVC guidelines and features role-based access control for administrators, faculty members, and students with robust JWT session token management."
+    }
   ]
 
   return (
@@ -210,38 +158,49 @@ export default function Projects() {
                             </ul>
                           </div>
 
-                          <div className="flex gap-4 pt-2">
-                            <Button
-                              size="sm"
-                              variant="outline"
-                              onClick={(e) => {
-                                e.stopPropagation()
-                                window.open(project.githubLink, "_blank")
-                              }}
-                            >
-                              <Github className="h-4 w-4 mr-2" />
-                              Code
-                            </Button>
-                            <Button
-                              size="sm"
-                              onClick={(e) => {
-                                e.stopPropagation()
-                                window.open(project.demoLink, "_blank")
-                              }}
-                            >
-                              <ExternalLink className="h-4 w-4 mr-2" />
-                              Demo
-                            </Button>
-                            <Button
-                              size="sm"
-                              variant="outline"
-                              onClick={(e) => {
-                                e.stopPropagation()
-                                setSelectedProject(project)
-                              }}
-                            >
-                              Learn More
-                            </Button>
+                          <div className="flex flex-wrap gap-2 pt-2 sm:gap-4">
+                            {project.githubLink && (
+                              <Button
+                                size="sm"
+                                variant="outline"
+                                className="w-full sm:w-auto"
+                                onClick={(e) => {
+                                  e.stopPropagation()
+                                  window.open(project.githubLink, "_blank")
+                                }}
+                              >
+                                <Github className="h-4 w-4 mr-2" />
+                                View Code
+                              </Button>
+                            )}
+                            {project.frontendGithubLink && (
+                              <Button
+                                size="sm"
+                                variant="outline"
+                                className="w-full sm:w-auto"
+                                onClick={(e) => {
+                                  e.stopPropagation()
+                                  window.open(project.frontendGithubLink, "_blank")
+                                }}
+                              >
+                                <Github className="h-4 w-4 mr-2" />
+                                Frontend Code
+                              </Button>
+                            )}
+                            {project.backendGithubLink && (
+                              <Button
+                                size="sm"
+                                variant="outline"
+                                className="w-full sm:w-auto"
+                                onClick={(e) => {
+                                  e.stopPropagation()
+                                  window.open(project.backendGithubLink, "_blank")
+                                }}
+                              >
+                                <Github className="h-4 w-4 mr-2" />
+                                Backend Code
+                              </Button>
+                            )}
                           </div>
                         </div>
                       </motion.div>
@@ -261,56 +220,6 @@ export default function Projects() {
           ))}
         </div>
       </div>
-
-      {selectedProject && (
-        <Dialog open={!!selectedProject} onOpenChange={() => setSelectedProject(null)}>
-          <DialogContent className="max-w-3xl">
-            <DialogHeader>
-              <DialogTitle>{selectedProject.title}</DialogTitle>
-              <DialogDescription>
-                <div className="flex flex-wrap gap-2 mt-2 mb-4">
-                  {selectedProject.tags.map((tag, i) => (
-                    <Badge key={i} variant="secondary">
-                      {tag}
-                    </Badge>
-                  ))}
-                </div>
-              </DialogDescription>
-            </DialogHeader>
-            <div className="space-y-4">
-              <img
-                src={selectedProject.image || "/placeholder.svg"}
-                alt={selectedProject.title}
-                className="w-full rounded-md object-cover aspect-video"
-              />
-              <p className="text-muted-foreground">{selectedProject.fullDescription}</p>
-              <div className="space-y-4">
-                <h4 className="font-semibold">Key Features:</h4>
-                <ul className="list-disc list-inside text-muted-foreground space-y-2">
-                  {selectedProject.features.map((feature, i) => (
-                    <li key={i}>{feature}</li>
-                  ))}
-                </ul>
-              </div>
-              <div className="flex justify-end gap-4 mt-4">
-                <Button variant="outline" asChild>
-                  <a href={selectedProject.githubLink} target="_blank" rel="noopener noreferrer">
-                    <Github className="h-4 w-4 mr-2" />
-                    View Code
-                  </a>
-                </Button>
-                <Button asChild>
-                  <a href={selectedProject.demoLink} target="_blank" rel="noopener noreferrer">
-                    <ExternalLink className="h-4 w-4 mr-2" />
-                    Live Demo
-                  </a>
-                </Button>
-              </div>
-            </div>
-          </DialogContent>
-        </Dialog>
-      )}
     </section>
   )
 }
-
