@@ -4,12 +4,10 @@ import { useState, useEffect } from "react"
 import { Menu, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
-import ResumeModal from "@/components/resume-modal"
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
-  const [isResumeOpen, setIsResumeOpen] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -66,7 +64,11 @@ export default function Navbar() {
                 {link.name}
               </button>
             ))}
-            <Button onClick={() => setIsResumeOpen(true)}>Resume</Button>
+            <Button asChild>
+              <a href="/resume.pdf" target="_blank" rel="noopener noreferrer">
+                Resume
+              </a>
+            </Button>
           </nav>
 
           {/* Mobile Navigation Toggle */}
@@ -90,22 +92,15 @@ export default function Navbar() {
                   {link.name}
                 </button>
               ))}
-              <Button
-                className="w-full"
-                onClick={() => {
-                  setIsOpen(false)
-                  setIsResumeOpen(true)
-                }}
-              >
-                Resume
+              <Button asChild className="w-full" onClick={() => setIsOpen(false)}>
+                <a href="/resume.pdf" target="_blank" rel="noopener noreferrer">
+                  Resume
+                </a>
               </Button>
             </nav>
           </div>
         </div>
       )}
-
-      {/* Resume Viewer Modal */}
-      <ResumeModal isOpen={isResumeOpen} onOpenChange={setIsResumeOpen} />
     </header>
   )
 }
