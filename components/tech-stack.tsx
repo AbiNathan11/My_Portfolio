@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent } from "@/components/ui/card"
@@ -86,7 +86,19 @@ export default function TechStack() {
     visible: { opacity: 1, scale: 1 },
   }
 
-  const [selectedMilestone, setSelectedMilestone] = useState<string | null>("languages")
+  const [selectedMilestone, setSelectedMilestone] = useState<string | null>("frontend")
+
+  useEffect(() => {
+    const categoryKeys = ["languages", "frontend", "backend", "database", "tools"]
+    const rotation = window.setInterval(() => {
+      setSelectedMilestone((currentCategory) => {
+        const currentIndex = categoryKeys.indexOf(currentCategory ?? "frontend")
+        return categoryKeys[(currentIndex + 1) % categoryKeys.length]
+      })
+    }, 3500)
+
+    return () => window.clearInterval(rotation)
+  }, [])
 
   return (
     <section id="tech-stack" className="py-20">
@@ -192,4 +204,3 @@ export default function TechStack() {
     </section>
   )
 }
-

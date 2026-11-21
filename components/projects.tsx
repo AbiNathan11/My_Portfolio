@@ -18,6 +18,7 @@ type Project = {
   githubLink?: string
   frontendGithubLink?: string
   backendGithubLink?: string
+  adminGithubLink?: string
   fullDescription: string
 }
 
@@ -81,6 +82,71 @@ export default function Projects() {
       githubLink: "https://github.com/AbiNathan11/University-timetable-system",
       fullDescription:
         "This project is a highly automated web application built to solve complex scheduling conflicts in universities. Utilizing React.js (Vite) for the frontend and Django REST Framework for the powerful algorithmic backend, the system generates optimized timetables automatically based on constraints like classroom capacity, lecturer availability, and semester batches. It uses MySQL as a database following strict MVC guidelines and features role-based access control for administrators, faculty members, and students with robust JWT session token management."
+    },
+    {
+      id: 4,
+      title: "Stayzo",
+      shortDescription: "Automated Tenant and Property Intelligence System",
+      description:
+        "A full-stack property rental platform connecting tenants with verified property owners.",
+      image: "/stayzo.png",
+      tags: [
+        "Next.js",
+        "React.js",
+        "TypeScript",
+        "Node.js",
+        "Express.js",
+        "PostgreSQL",
+        "Prisma",
+        "JWT",
+        "Socket.IO",
+        "AWS S3",
+        "Google Maps API"
+      ],
+      features: [
+        "Built a full-stack property rental platform connecting tenants with verified property owners.",
+        "Implemented property search, bookings, availability management, real-time chat, reviews, and notifications.",
+        "Created role-based dashboards with secure authentication, digital lease agreements, identity verification, and admin management."
+      ],
+      frontendGithubLink: "https://github.com/AbiNathan11/Stayzo_frontend.git",
+      backendGithubLink: "https://github.com/AbiNathan11/Stayzo_backend.git",
+      adminGithubLink: "https://github.com/AbiNathan11/Stayzo_admin.git",
+      fullDescription:
+        "Stayzo is an automated tenant and property intelligence platform built with Next.js, React.js, and TypeScript on the frontend and Node.js, Express.js, PostgreSQL, and Prisma on the backend. It provides verified property listings, search and booking workflows, availability management, real-time communication with Socket.IO, reviews and notifications, and AWS S3 storage. Secure JWT authentication powers role-based tenant, owner, and administrator dashboards, along with digital lease agreements, identity verification, Google Maps integration, and comprehensive admin management."
+    },
+    {
+      id: 5,
+      title: "OpenLearn",
+      shortDescription: "Online Learning Management Platform",
+      description:
+        "A full-stack online learning platform for students, instructors, and administrators.",
+      image: "/openlearn.png",
+      tags: [
+        "React.js",
+        "Vite",
+        "Tailwind CSS",
+        "Node.js",
+        "Express.js",
+        "MongoDB",
+        "Mongoose",
+        "JWT",
+        "OAuth",
+        "Stripe",
+        "Cloudinary",
+        "OpenAI API",
+        "LangChain",
+        "Pinecone",
+        "RAG"
+      ],
+      features: [
+        "Developed a full-stack online learning platform for students, instructors, and administrators.",
+        "Built RESTful APIs for course creation, lesson management, enrollments, progress tracking, quizzes, ratings, and admin approvals.",
+        "Implemented AI-powered course assistance, lesson summaries, secure authentication, OAuth login, Stripe payments, Cloudinary uploads, and email-based password recovery."
+      ],
+      frontendGithubLink: "https://github.com/AbiNathan11/openlearn-frontend.git",
+      backendGithubLink: "https://github.com/AbiNathan11/openlearn-backend.git",
+      fullDescription:
+        "OpenLearn is a full-stack online learning management platform built with React.js, Vite, and Tailwind CSS on the frontend and Node.js, Express.js, MongoDB, and Mongoose on the backend. It supports course creation, lesson management, enrollments, progress tracking, quizzes, ratings, and administrator approvals. The platform includes secure JWT authentication, OAuth login, Stripe payments, Cloudinary media uploads, email-based password recovery, and AI-powered course assistance and lesson summaries using the OpenAI API, LangChain, Pinecone, and retrieval-augmented generation."
     }
   ]
 
@@ -199,6 +265,20 @@ export default function Projects() {
                               >
                                 <Github className="h-4 w-4 mr-2" />
                                 Backend Code
+                              </Button>
+                            )}
+                            {project.adminGithubLink && (
+                              <Button
+                                size="sm"
+                                variant="outline"
+                                className="w-full sm:w-auto"
+                                onClick={(e) => {
+                                  e.stopPropagation()
+                                  window.open(project.adminGithubLink, "_blank")
+                                }}
+                              >
+                                <Github className="h-4 w-4 mr-2" />
+                                Admin Dashboard Code
                               </Button>
                             )}
                           </div>
